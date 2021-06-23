@@ -1,0 +1,16 @@
+.calendar-footer {
+  width: 100%;
+  margin-top: 32px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  &__btn {
+    padding: 16px 32px;
+    background: var(--orange);
+    color: var(--dark);
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+  }
+}

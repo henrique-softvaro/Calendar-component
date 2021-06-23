@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100vh;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --white: #fff;
+  --orange: #eb7f03;
+  --dark: #000;
+
+  --font-secondary: #9d9d9d;
+  --font-primary: #313131;
+  
+  --hovered: #a8a8a8;
+  --disabled: #b4b4b4;
+  
+  --border-radius: 12px;
+  --shadow: 3px 4px 6px #ccc;
+}

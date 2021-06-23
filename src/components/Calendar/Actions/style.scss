@@ -1,0 +1,24 @@
+.calendar-actions {
+    width: 400px;
+    padding: 24px 16px;
+    background-color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+
+  &__btn {
+    display: flex;
+    flex: 1;
+    border: none;
+    background-color: var(--white);
+  }
+
+  &__input {
+    border: none;
+  }
+
+  &__icon {
+    fill: var(--font-secondary);
+  }
+}

@@ -1,0 +1,30 @@
+.calendar-header {
+  padding: 16px 8px;
+  display: flex;
+  align-items: center;
+
+  &__btn {
+    display: block;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__icon {
+    fill: var(--font-primary);
+    width: 25px;
+    height: 25px;
+  }
+
+  &__container-week {
+    color: var(--font-primary);
+    font-weight: bold;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__day {
+    padding: 0 8px;
+  }
+}
