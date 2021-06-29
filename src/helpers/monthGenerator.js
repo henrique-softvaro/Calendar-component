@@ -4,10 +4,10 @@ import {
   endOfMonth, 
   endOfWeek, 
   startOfDay, 
-  addDays 
+  addDays
 } from 'date-fns';
 
-function takeWeek(start = new Date()) {  // week generator 
+function takeWeek(start = new Date()) {
   let date = startOfWeek(startOfDay(start));
 
   return function () {
@@ -17,7 +17,7 @@ function takeWeek(start = new Date()) {  // week generator
   }
 };
 
-export function takeMonth(start = new Date()) { // month generator
+export function takeMonth(start = new Date()) {
   let month = [];
   let date = start;
   
@@ -39,6 +39,19 @@ export function takeMonth(start = new Date()) { // month generator
     date = addDays(lastDayOfRange(range), 1);
 
     return range;
+  }
+};
+
+export function takeSpecificMonths(date = new Date(), method, month) {
+  const genMonth = takeMonth(date);
+  
+  const currentMonth = genMonth();
+  const nextMonth = genMonth(method(date, month));
+  
+  const visibleMonth = [currentMonth, nextMonth];
+
+  return function () {
+    return visibleMonth;
   }
 };
 

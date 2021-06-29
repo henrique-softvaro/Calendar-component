@@ -1,23 +1,31 @@
 .calendar-body {
   color: var(--font-primary);
+  display: flex;
+
+  &__month {
+    flex: 1 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__week {
     display: flex;
-    justify-content: center;
   }
 
   &__day {
     width: 42px;
     height: 42px;
     background-color: transparent;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
    
     &:hover {
-      .calendar-body__date  {
+      .calendar-body__date {
         background-color: var(--hovered);
-        color: var(--white);
       }
     }
   }
@@ -29,7 +37,27 @@
     border-radius: 50%;
   }
 
+  &__selected-startDate{
+    background-color: var(--dark);
+    color: var(--white);
+  }
+
+  &__selected-endDate{
+    background-color: var(--dark);
+    color: var(--white);
+  }
+  
+  &__selected-implicitDate{
+    background-color: var(--implicit);
+    color: var(--white);
+  }
+
   &__disabled-date {
-    color: var(--disabled);
+    color: rgb(202, 202, 202);
+  }
+
+  &__remove-date {
+    color: var(--invisible);
+    display: none;
   }
 }

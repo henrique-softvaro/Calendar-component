@@ -2,22 +2,47 @@ import { format } from 'date-fns';
 
 import './style.scss';
 
-import { CompareDates  } from '../../../helpers/compareDates';
+import { WeekDays } from './WeekDays';
 
-type BodyProps = {
-  month: Date[][];
-}
+import { BodyProps } from './types';
 
-export const Body = ({ month }: BodyProps) => {
+export const Body = ({ 
+  months, 
+  setSelectedDate, 
+  handleMonthByDay, 
+  searchMonthDays,
+  searchDaysBeforeToday,
+  compareStartDate,
+  compareEndDate,
+  handleImplicitSelectedDate
+}: BodyProps) => {
+
   return (
     <div className="calendar-body">
-      {month.map((weeks, i) => (
-        <div key={i} className="calendar-body__week">
-          {weeks.map((day, i) => (
-            <div key={i} className="calendar-body__day">
-              <time className={`calendar-body__date calendar-body__${CompareDates(day)}`}  >
-                {format(day, "dd")}
-              </time>
+      {months.map((month: any, i) => (
+        <div key={i} className="calendar-body__month">
+          <WeekDays year={handleMonthByDay(month)} />
+          {month.map((week: any, indexWeek: number) => (
+            <div key={`week-${indexWeek}`} className="calendar-body__week" >
+              {week.map((day: Date, indexDay: number) => (
+                <div
+                  key={`day-${indexDay}`}
+                  className="calendar-body__day"
+                  onClick={() => setSelectedDate(day)}
+                >
+                  <time
+                    className={`
+                      calendar-body__date 
+                      calendar-body__${searchMonthDays(day, month)}
+                      calendar-body__${compareStartDate(day)}
+                      calendar-body__${compareEndDate(day)}
+                      calendar-body__${searchDaysBeforeToday(day)}
+                      calendar-body__${handleImplicitSelectedDate(day)}
+                    `}>
+                    {format(day, "dd")}
+                  </time>
+                </div>
+              ))}
             </div>
           ))}
         </div>

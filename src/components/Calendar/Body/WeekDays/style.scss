@@ -1,0 +1,28 @@
+.calendar-weekDays {
+  padding: 16px 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__month {
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+
+  &__month-date {
+    text-transform: capitalize;
+  }
+
+  &__container-week {
+    color: var(--font-primary);
+    font-weight: bold;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__day {
+    padding: 0 8px;
+  }
+}

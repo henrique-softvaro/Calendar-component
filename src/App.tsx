@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './App.scss';
 
 import { Calendar } from './components/Calendar';

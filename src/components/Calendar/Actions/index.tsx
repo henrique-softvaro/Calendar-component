@@ -2,28 +2,30 @@ import { FaCalendarAlt } from 'react-icons/fa';
 
 import './style.scss';
 
-type ActionProps = {
-  startDate: string;
-  endDate: string;
-  setStartDate: (e: any ) => void;
-  setEndDate: (e: any) => void;
-  onClick: () => void;
-}
+import { ActionProps } from './types';
 
 export const Actions = ({ 
   startDate, 
   endDate, 
+  rightButtonFocus,
+  leftButtonFocus,
   setStartDate, 
   setEndDate, 
-  onClick 
+  onClick,
+  handleFocus,
 }: ActionProps) => {
 
   return (
     <div className="calendar-actions">
-      <button className="calendar-actions__btn">
+      <button 
+        className={`
+          calendar-actions__btn 
+          ${rightButtonFocus ? 'calendar-actions__btn__selected-focus' : ''}`} 
+        onClick={onClick} 
+        onFocus={() => handleFocus('start')}
+      >
         <input
-          className="calendar-actions__input"
-          onClick={onClick}
+          className={`calendar-actions__input`}
           type="text"
           value={startDate} 
           onChange={(e: any) => 
@@ -33,12 +35,16 @@ export const Actions = ({
         <FaCalendarAlt className="calendar-actions__icon" />
       </button>
 
-      <button className="calendar-actions__btn">
+      <button 
+        className={`calendar-actions__btn 
+          ${leftButtonFocus ? 'calendar-actions__btn__selected-focus' : ''}`} 
+        onClick={onClick}
+        onFocus={() => handleFocus('end')}
+      >
         <input 
-          className="calendar-actions__input"
-          onClick={onClick}
-          type="text" 
-          value={endDate} 
+          className={`calendar-actions__input`}
+          type="text"
+          value={endDate}
           onChange={(e: any) => setEndDate(e.target.value)} 
         />
         <FaCalendarAlt className="calendar-actions__icon" />

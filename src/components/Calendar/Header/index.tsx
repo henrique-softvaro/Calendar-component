@@ -1,32 +1,21 @@
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
 import './style.scss';
 
-const weekDays = [
-  'Dom',
-  'Seg',
-  'Ter',
-  'Qua',
-  'Qui',
-  'Sex',
-  'Sab'
-]
+type HeaderProps = {
+  handlePrevMonths: () => void; 
+  handleNextMonths: () => void; 
+};
 
-export const Header = () => {
-
+export const Header = ({ handlePrevMonths, handleNextMonths }: HeaderProps) => {
   return (
     <div className="calendar-header">
-      {/* <button className="calendar-header__btn">
-        <IoIosArrowBack className="calendar-header__icon"/>
-      </button> */}
-      <div className="calendar-header__container-week">
-        {weekDays.map(day => (
-          <span className="calendar-header__day" key={day}>{day}</span>
-        ))}
-      </div>
-      {/* <button className="calendar-header__btn">
-        <IoIosArrowForward  className="calendar-header__icon"/>
-      </button> */}
+        <button className="calendar-header__btn" onClick={handlePrevMonths}>
+          <IoIosArrowBack className="calendar-header__icon" />
+        </button>
+        <button className="calendar-header__btn" onClick={handleNextMonths}>
+          <IoIosArrowForward className="calendar-header__icon" />
+        </button>
     </div>
   )
 }
